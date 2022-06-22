@@ -1,0 +1,51 @@
+Intersection of two arrays
+link -   https://leetcode.com/problems/intersection-of-two-arrays/
+
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+        int n=nums1.size();
+        int m=nums2.size();
+        int i=0,j=0;
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+         vector<int> v;
+        vector<int> ans;
+        int digit=INT_MIN;
+        while(i<n && j<m){
+            if(nums1[i]==nums2[j]){
+                v.push_back(nums1[i]);
+                i++;
+                j++;
+            }
+            else if(nums1[i]<nums2[j])
+                i++;
+            else 
+                j++;
+        }
+        sort(v.begin(),v.end());
+        for(int i=0;i<v.size();i++){
+            if(digit!=v[i]){
+                ans.push_back(v[i]);
+                digit=v[i];
+            }
+                
+        }
+    return ans;
+    }
+};
+
+2nd app- using set
+
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+         set<int> s,s1;
+        vector<int> ans;
+        for(int i=0; i<nums1.size(); i++)
+            s.insert(nums1[i]);
+        for(auto it:nums2)
+            if(s.find(it)!=s.end())
+                s1.insert(it);
+        for(auto it:s1)
+            ans.push_back(it);
+        return ans;
+    }
