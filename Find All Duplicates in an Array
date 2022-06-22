@@ -1,0 +1,49 @@
+problem -- Find All Duplicates in an Array
+
+link -- https://leetcode.com/problems/find-all-duplicates-in-an-array/
+
+code --
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+      vector<int> result; 
+        for(int n: nums){
+            n = abs(n);
+            if(nums[n-1] > 0)
+            {
+                nums[n-1]*= -1;
+            }
+            else
+            {
+                result.push_back(n);
+            }
+        }
+        return result;
+ 
+    }
+};
+
+2nd using map
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        vector<int>ans;
+        unordered_map<int,int>mp;
+        
+        for(int x:nums)
+            mp[x]++;
+        
+        for(auto it:mp)
+        {
+             if(it.second==2)
+             {
+                 ans.push_back(it.first);
+             }
+                
+        }
+           
+        return ans;
+    }
+};
