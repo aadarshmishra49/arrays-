@@ -1,0 +1,25 @@
+problem - pair sum 
+link -- https://www.codingninjas.com/codestudio/problems/pair-sum_1171154?topList=love-babbar-dsa-sheet-problems&leftPanelTab=1\
+
+code --
+
+int pairSum(vector<int> &arr, int n, int target){
+	// Write your code here.
+    int count=0;
+    int s=0,e=n-1;
+    while(s<e){
+        if(arr[s]+arr[e]==target){
+            s++;
+            e--;
+            count++;
+        }
+        
+        else if(arr[s]+arr[e]>target)
+              e--;
+        else if(arr[s]+arr[e]<target)
+              s++;
+     }
+    
+    if(count>0) return count;
+    return -1;
+}
