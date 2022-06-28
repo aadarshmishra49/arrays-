@@ -1,0 +1,42 @@
+problem - Move All Negative Numbers To Beginning And Positive To End
+
+link - https://www.codingninjas.com/codestudio/problems/move-all-negative-numbers-to-beginning-and-positive-to-end_1112620?topList=love-babbar-dsa-sheet-problems&leftPanelTab=0
+code --
+
+vector<int> separateNegativeAndPositive(vector<int> &nums){
+    // Write your code here.
+    int n=nums.size();
+    int j=0;
+    for(int i=0;i<n;i++){
+        if(nums[i]<0)
+            swap(nums[j++],nums[i]);
+        
+        
+    }
+    return nums;
+}
+
+2nd way 
+
+
+vector<int> separateNegativeAndPositive(vector<int> &nums){
+    // Write your code here.
+    int n=nums.size();
+    int s=0,e=n-1;
+    while(s<=e){
+        // dono hi -ve ho
+        if(nums[s]<0 && nums[e]<0)
+            s++;
+        //s +ve and  r -ve ho
+        else if(nums[s]>0 && nums[e]<0)
+            swap(nums[s++],nums[e--]);
+        else {
+            // dono +ve ho
+            e--;
+        }
+        
+    }
+    return nums;
+    
+    
+}
